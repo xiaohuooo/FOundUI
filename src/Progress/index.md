@@ -1,7 +1,7 @@
 # Progress
 
 :::warning{title=开发中}
-Dropdown 组件处于开发阶段
+Progress 组件处于开发阶段
 :::
 
 ## 线性使用
@@ -24,8 +24,6 @@ export default () => {
 ```
 
 ## 圆形使用
-
-This is an example component.
 
 ```jsx
 import { Progress } from 'FOundUI'
@@ -82,6 +80,7 @@ export default () => {
                 type="circle"
                 status="exception"
             ></Progress>
+            <br />
             <Button variant="outlined" onClick={decline}>
                 -
             </Button>
@@ -95,10 +94,11 @@ export default () => {
 
 ## API
 
-| 参数        | 说明           | 类型                                | 默认值 |
-| ----------- | -------------- | ----------------------------------- | ------ |
-| progress    | 当前进度       | number                              | 36     |
-| width       | 进度条总宽度   | number/string                       | 600    |
-| strokeWidth | 进度条线的宽度 | number/string                       | 8      |
-| showInfo    | 状态图标       | boolean                             | true   |
-| status      | 进度条状态     | 'success' / 'warning' / 'exception' | null   |
+| 参数        | 说明           | 类型                          | 默认值 |
+| ----------- | -------------- | ----------------------------- | ------ |
+| progress    | 当前进度       | number                        | 36     |
+| width       | 进度条总宽度   | number/string                 | 600    |
+| strokeWidth | 进度条线的宽度 | number/string                 | 8      |
+| showInfo    | 状态图标       | boolean                       | true   |
+| status      | 进度条状态     | success / warning / exception | null   |
+| type        | 进度条类型     | line / circle                 | line   |
