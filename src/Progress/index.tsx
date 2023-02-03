@@ -51,9 +51,9 @@ const FOProgresscircle = styled.circle<FOProgresscircleProps>`
             : props.status === 'exception'
             ? primaryColorSystem.FORED
             : primaryColorSystem.FOBLUE};
-    stroke-width: 8;
     stroke-dasharray: 314;
-    stroke-dashoffset: ${(props) => 314 - props.progress * 3.14};
+    stroke-dashoffset: ${(props) =>
+        314 - props.progress * 3.14 < 0 ? 0 : 314 - props.progress * 3.14};
     transition: all 0.3s cubic-bezier(0.08, 0.82, 0.17, 1);
     stroke-linecap: round;
     transform: rotate(-90deg);
@@ -92,15 +92,21 @@ const Progress: FC<Progressprops> = (props) => {
             ) : (
                 <svg style={{ width: width + 'px', height: width + 'px' }}>
                     <FOProgresscircle
-                        cx="56"
-                        cy="56"
+                        cx={50 + Number(strokeWidth) / 2}
+                        cy={50 + Number(strokeWidth) / 2}
                         r="50"
                         stroke="#7C83FD"
+                        strokeWidth={strokeWidth}
                         progress={progress}
                         status={status}
                     ></FOProgresscircle>
-                    <text x="56" y="62" fill="#6b778c" textAnchor="middle">
-                        <tspan>{progress}</tspan>
+                    <text
+                        x={50 + Number(strokeWidth) / 2}
+                        y={56 + Number(strokeWidth) / 2}
+                        fill="#6b778c"
+                        textAnchor="middle"
+                    >
+                        <tspan>{progress >= 100 ? 100 : progress}</tspan>
                         <tspan>%</tspan>
                     </text>
                 </svg>
